@@ -10,6 +10,7 @@ import emitter from '@/utils/Emitter';
 let scroll_bar = ref()
 
 let messages: any = ref([])
+let base_url =  import.meta.env.VITE_APP_API_BASE
 
 let max_width = ref(0)
 onMounted(() => {
@@ -41,7 +42,7 @@ async function handleQuestion() {
 
         messages.value.push({ role: 'user', content: content, date: parseTime(new Date(), '{y}/{m}/{d} {h}:{i}:{s}') })
         messages.value.push({ role: 'assistant', content: '', date: parseTime(new Date(), '{y}/{m}/{d} {h}:{i}:{s}') })
-        let resp: any = await fetch(`http://localhost:8080/chat/completions/stream`, {
+        let resp: any = await fetch(`${base_url}/chat/completions/stream`, {
             method: 'post',
             headers: { "Content-Type": "application/json", "Authorization": 'Bearer ' + store.state.token },
             body: JSON.stringify({ content })
