@@ -1,0 +1,300 @@
+@import './variable.scss';
+
+body {
+    .n-base-select-menu .n-base-select-option {
+        --option-font-size: 12px !important;
+    }
+}
+
+.n-input {
+    --n-font-size: 12px !important;
+    font-size: 12px !important;
+    --n-height: 32px !important;
+}
+
+.n-button {
+    --n-font-size: 12px !important;
+    --n-icon-size: 12px !important;
+    --n-height: 32px !important;
+}
+.n-data-table {
+    .n-select {
+        .n-base-selection {
+            --n-height: 20px !important;
+        }
+    }
+}
+.n-form-item {
+    --n-blank-height: 32px !important;
+    --n-label-font-size: 12px !important;
+    --n-feedback-font-size:12px !important;
+}
+.n-form-item,.n-data-table {
+    .n-select {
+        display: flex;
+        align-items: center;
+        .n-base-selection {
+            --n-border: none !important;
+            --n-border-active: none !important;
+            --n-border-focus: none !important;
+            --n-border-hover: none !important;
+            --n-caret-color: none !important;
+            --n-box-shadow-focus: none !important;
+            --n-box-shadow-active: none !important;
+            font-size: 12px !important;
+            --n-height: 30px !important;
+        }
+    }
+
+}
+.n-select {
+    .n-base-selection {
+        font-size: 12px !important;
+        --n-height: 32px !important;
+    }
+}
+
+
+.n-select-menu {
+    --n-option-font-size: 12px !important;
+}
+.select {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid rgb(224, 224, 230);
+    border-radius: 3px;
+    height: 32px;
+    box-sizing: border-box;
+
+    &:focus,
+    &:active,
+    &:hover {
+        border: 1px solid #36ad6a;
+        --n-caret-color: #18a058;
+    }
+    .n-date-picker .n-input {
+        --n-border: none !important;
+        --n-border-active: none !important;
+        --n-border-focus: none !important;
+        --n-border-hover: none !important;
+        --n-caret-color: none !important;
+        --n-box-shadow-focus: none !important;
+        --n-box-shadow-active: none !important;
+        --n-border: none !important;
+        --n-height: 30px !important;
+    }
+    .prefix {
+        transition: color .3s cubic-bezier(0.4, 0, 0.2, 1);
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        line-height: 32px;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(51, 54, 57);
+        margin-left: 12px;
+    }
+}
+
+.n-data-table {
+    --n-font-size: 12px !important;
+
+    .n-data-table-tr:not(.n-data-table-tr--summary):hover {
+        background-color: #fff;
+
+        &>.n-data-table-td {
+           //background-color: #fff;
+           //background-color: none !important;
+        }
+    }
+}
+
+
+.n-pagination {
+    --n-font-size: 12px !important;
+    --n-item-font-size: 12px !important;
+    --n-jumper-font-size: 12px !important;
+}
+
+.n-tag {
+    --n-font-size: 12px !important;
+    --n-height: 22px !important;
+    --n-close-icon-size: 12px !important;
+    font-size: 12px !important;
+    //width: auto;
+    //display: flex;
+    justify-content: center;
+}
+
+.n-dropdown-menu {
+    --n-font-size: 12px !important;
+}
+
+.operator .n-button:not(:first-child) {
+    margin-left: 10px;
+}
+
+.ck-body-wrapper {
+    .ck-balloon-panel {
+        z-index: 3000 !important;
+    }
+}
+
+.plan-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    .card {
+        flex: 0 0 30%;
+        margin-bottom: 10px;
+        margin-left: 10px;
+
+        &-header {
+            min-height: 1.75rem;
+            margin: 0;
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.75;
+            font-weight: bold;
+        }
+
+        &-price {
+            transition: opacity .25s ease-out;
+            margin: 0 auto;
+            padding: 1.25rem 1.25rem 1px;
+            overflow-x: visible;
+            background-color: #e9ecef;
+
+            &-main {
+                color: #212529;
+                font-size: 2.25rem;
+                margin-top: 0;
+                margin-bottom: 0.5rem;
+                font-weight: 600;
+                line-height: 1.25;
+            }
+
+            &-desc {
+                color: #6c757d;
+                font-size: 1rem;
+                font-weight: 600;
+                line-height: 1.25;
+                margin-top: 0;
+            }
+        }
+
+        .n-card {
+            box-shadow: 0 1px 3px rgba(228, 228, 228, .5), 0 1px 2px rgba(228, 228, 228, .5);
+
+            &:hover {
+                transform: translateY(-2px);
+                opacity: 1;
+                box-shadow: 0 0.5rem 2rem #e1e1e1;
+            }
+            .n-card-header{
+                padding: 0.75rem 1.25rem;
+            }
+            .n-card__content {
+                padding: 0;
+            }
+        }
+
+
+
+        &-body {
+            margin: 0 auto;
+            padding: 1.25rem;
+
+            p {
+              margin: 0;
+            }
+            p:not(:first) {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .plan-list {
+        flex-direction: column;
+        .card {
+            flex: 1;
+        }
+    }
+}
+
+@media (max-width:1280px) and (min-width: 768px) {
+    .plan-list {
+        .card {
+            flex:  0 0 45%;
+        }
+    }
+}
+
+.markdown-body {
+    background-color: transparent;
+    font-size: 14px
+}
+
+.markdown-body p {
+    white-space: pre-wrap
+}
+
+.markdown-body ol {
+    list-style-type: decimal
+}
+
+.markdown-body ul {
+    list-style-type: disc
+}
+
+.markdown-body pre code,.markdown-body pre tt {
+    line-height: 1.65
+}
+
+.markdown-body .highlight pre,.markdown-body pre {
+    background-color: #fff
+}
+
+.markdown-body code.hljs {
+    padding: 0
+}
+
+.markdown-body .code-block-wrapper {
+    position: relative;
+    padding-top: 24px
+}
+
+.markdown-body .code-block-header {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #b3b3b3
+}
+
+.markdown-body .code-block-header__copy {
+    cursor: pointer;
+    margin-left: .5rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none
+}
+
+.markdown-body .code-block-header__copy:hover {
+    color: #65a665
+}
+
+
+.container {
+    flex-direction: column;
+    padding: 20px;
+    flex: 1;
+}

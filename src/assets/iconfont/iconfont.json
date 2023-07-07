@@ -1,0 +1,86 @@
+{
+  "id": "3986918",
+  "name": "台账助手",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6941977",
+      "name": "下载",
+      "font_class": "xiazai-",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "6176583",
+      "name": "文件",
+      "font_class": "wenjian",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "16071267",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "22954397",
+      "name": "拖动",
+      "font_class": "tuodong",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "9826664",
+      "name": "警告",
+      "font_class": "jinggao",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "10666917",
+      "name": "成功",
+      "font_class": "chenggong",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "6151293",
+      "name": "plus",
+      "font_class": "plus",
+      "unicode": "e829",
+      "unicode_decimal": 59433
+    },
+    {
+      "icon_id": "567238",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "1167278",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "5647049",
+      "name": "上传",
+      "font_class": "shangchuan",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "12889882",
+      "name": "统计分析-项目表格统计",
+      "font_class": "tongjifenxi-xiangmubiaogetongji",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    }
+  ]
+}
