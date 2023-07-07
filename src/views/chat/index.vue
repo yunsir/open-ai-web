@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { NInput, NScrollbar, NAvatar } from 'naive-ui';
 import { parseTime } from '@/utils/Date';
-import Waiting from '@/components/Waiting';
+import Waiting from '@/components/waiting';
 import { md } from '@/utils/Markdown';
 import { nextTick, onMounted, ref, watch } from 'vue';
 import store from '@/store';

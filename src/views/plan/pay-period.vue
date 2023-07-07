@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { NDataTable, NButton, NDrawer, NDrawerContent, NForm, NFormItem, FormRules ,NInput,useMessage} from 'naive-ui';
 import { h, reactive, ref, onMounted } from 'vue';
-import CodeEditor from '@/components/CodeEditor'
+import CodeEditor from '@/components/code-editor'
 import Service from '@/utils/Service';
 const message = useMessage()
 onMounted(() => {
