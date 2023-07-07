@@ -3,7 +3,7 @@ import { NButton, useMessage, NCard, useDialog } from 'naive-ui';
 import { reactive, ref, onMounted } from 'vue';
 
 import Service from '@/utils/Service';
-import drawer from '@/components/drawer';
+import Drawer from '@/components/drawer';
 import PlanForm from './plan-form.vue';
 import ObjectUtil from '@/utils/ObjectUtil';
 const message = useMessage()
@@ -115,7 +115,7 @@ function handleAdd(item?: any) {
             </template>
         </div>
     </div>
-    <drawer v-model:show="show_form" width="40%" placement="right" title="套餐">
+    <Drawer v-model:show="show_form" width="40%" placement="right" title="套餐">
         <template #body>
             <plan-form :form="form" :periods_options="periods_options"> </plan-form>
         </template>
