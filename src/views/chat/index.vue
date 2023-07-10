@@ -6,6 +6,7 @@ import { md } from '@/utils/Markdown';
 import { nextTick, onMounted, ref, watch } from 'vue';
 import store from '@/store';
 import emitter from '@/utils/Emitter';
+import Service from '@/utils/Service';
 
 let scroll_bar = ref()
 
@@ -13,6 +14,9 @@ let messages: any = ref([])
 let base_url =  import.meta.env.VITE_APP_API_BASE
 
 let max_width = ref(0)
+let cur_session_id:any = undefined
+
+
 onMounted(() => {
     nextTick(() => {
         let body: any = document.querySelector(".dialogue .n-scrollbar-content")
@@ -21,6 +25,17 @@ onMounted(() => {
 
         let chat: any = document.querySelector(".chat")
         max_width.value = chat.scrollWidth - 36
+    })
+
+    emitter.on('click_session', async (session_id:any)=>{
+        cur_session_id = session_id
+
+        let resp:any = await Service.get(`/chat-sessions/${session_id}/histories`)
+        if('return_code' in resp) {
+
+        } else {
+            messages.value= resp
+        }
     })
 })
 watch(() => messages.value, (value) => {
@@ -33,6 +48,8 @@ watch(() => messages.value, (value) => {
 let question: any = ref()
 let diable_input = ref(false)
 const decoder = new TextDecoder("utf-8");
+
+
 async function handleQuestion() {
     try {
         diable_input.value = true
@@ -45,7 +62,7 @@ async function handleQuestion() {
         let resp: any = await fetch(`${base_url}/chat/completions/stream`, {
             method: 'post',
             headers: { "Content-Type": "application/json", "Authorization": 'Bearer ' + store.state.token },
-            body: JSON.stringify({ content })
+            body: JSON.stringify({ content,  session_id:cur_session_id})
         })
 
         if (resp.ok && resp.body) {
@@ -79,7 +96,8 @@ async function readStream(reader: ReadableStreamDefaultReader<Uint8Array>) {
                 }
                 let result = JSON.parse(temp[1])
                 if (result.return_code === 'success') {
-                    let { content, created, error } = result.data
+                    let { content, created, error ,session_id} = result.data
+                    cur_session_id = session_id
                     if (error) {
 
                     } else {
@@ -100,6 +118,14 @@ function setLastMessage(msg: any, date: any) {
     last.content += msg
 
     last.date = parseTime(new Date(Number(date)), '{y}/{m}/{d} {h}:{i}:{s}')
+}
+
+
+function clearSession() {
+    messages.value.length = 0
+    if(cur_session_id) {
+        Service.delete(`/chat-sessions/${cur_session_id}/histories`)
+    }
 }
 
 </script>
@@ -130,8 +156,8 @@ function setLastMessage(msg: any, date: any) {
             </n-scrollbar>
         </div>
         <div class="chat-bottom">
-            <icon name="plus" style="font-size:16px;margin-right: 15px;"></icon>
-            <icon name="shanchu" style="font-size:16px;margin-right: 15px;"></icon>
+            <icon name="plus" style="font-size:16px;margin-right: 15px;cursor: pointer;"></icon>
+            <icon name="shanchu" style="font-size:16px;margin-right: 15px;cursor: pointer;" @click="clearSession"></icon>
             <n-input v-model:value="question" placeholder="请输入命令" @keydown.enter.prevent="() => false"
                 @keyup.enter.prevent="handleQuestion" :disabled="diable_input">
                 <template #suffix>

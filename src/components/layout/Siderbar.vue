@@ -4,6 +4,8 @@ import { useRouter } from 'vue-router';
 import store from '@/store';
 import { onMounted, ref } from 'vue';
 import Service from '@/utils/Service';
+import emitter from '@/utils/Emitter';
+
 const router = useRouter()
 
 let avatar = ref(`https://www.gravatar.com/avatar/${store.state.user_info.id}?d=identicon`)
@@ -15,13 +17,18 @@ onMounted(() => {
     querySessions()
 })
 
-let data = ref([])
+let data: any = ref([])
 async function querySessions() {
     let resp: any = await Service.get(`/chat-sessions`)
     data.value = resp
 }
-
-
+async function delSession(session_id) {
+    await Service.delete(`/chat-sessions/${session_id}`)
+    querySessions()
+}
+async function handleClickSession(session_id) {
+    emitter.emit('click_session', session_id)
+}
 </script>
 
 <template>
@@ -31,7 +38,19 @@ async function querySessions() {
 
         <div class="menu-container">
             <n-scrollbar class="history">
+                <n-list class="menu-list" style="width: 100%;">
+                    <template v-for="session in data">
+                        <n-list-item>
+                            <div class="menu-item" @click="handleClickSession(session.session_id)">
+                                <div class="desc">{{ session.session_name }}</div>
 
+                                <icon class="del-session" name="shanchu" @click="delSession(session.session_id)"/>
+                            </div>
+                        </n-list-item>
+                    </template>
+
+
+                </n-list>
             </n-scrollbar>
             <n-list class="menu-list">
                 <n-list-item style="padding: 0;"></n-list-item>
@@ -120,6 +139,14 @@ async function querySessions() {
 :deep(.n-list) {
     .n-list-item {
         padding: 12px 15px;
+
+        &:hover{
+            background-color: #e7f5ee;
+            .del-session {display: block}
+        }
+        .del-session {
+            display: none;
+        }
     }
 }
 </style>
@@ -142,6 +169,9 @@ async function querySessions() {
 
     .history {
         flex: 1;
+        .n-list-item__divider {
+            display: none;
+        }
     }
 }
 
