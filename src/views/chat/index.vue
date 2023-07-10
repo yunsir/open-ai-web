@@ -113,8 +113,8 @@ function setLastMessage(msg: any, date: any) {
                         <div :class="['row', item.role === 'user' ? 'reverse' : '']">
                             <div class="left">
                                 <icon v-if="item.role !== 'user'" name="chatgpt" style="font-size:28px"></icon>
-                                <n-avatar v-else round size="small"
-                                    src="https://raw.githubusercontent.com/Chanzhaoyu/chatgpt-web/main/src/assets/avatar.jpg" />
+                                <icon v-else name = "avator" style="font-size:28px"></icon>
+
                             </div>
                             <div class="right" :style="[max_width ? { maxWidth: max_width + 'px' } : {}]">
                                 <div class="date">{{ item.date }}</div>
