@@ -101,7 +101,6 @@ async function handlePayOrder() {
 <style lang="scss" scoped>
 .buy-plan {
     max-width: 1200px;
-    margin: auto;
     display: flex;
 
     .left {

@@ -108,7 +108,7 @@ function setLastMessage(msg: any, date: any) {
     <div class="container" style="padding: 0;display: flex;">
         <div class="chat">
             <n-scrollbar class="dialogue" ref="scroll_bar">
-                <div  class="container" style="padding: 0;flex: 1;display: flex;">
+                <div  class="container" style="padding: 0 80px;flex: 1;display: flex;">
                     <template v-for="item in messages">
                         <div :class="['row', item.role === 'user' ? 'reverse' : '']">
                             <div class="left">
