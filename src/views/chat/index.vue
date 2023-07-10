@@ -135,7 +135,7 @@ function setLastMessage(msg: any, date: any) {
             <n-input v-model:value="question" placeholder="请输入命令" @keydown.enter.prevent="() => false"
                 @keyup.enter.prevent="handleQuestion" :disabled="diable_input">
                 <template #suffix>
-                    <icon name="fasong" style="color: green;"></icon>
+                    <icon name="fasong" style="color: green;" @click="handleQuestion"></icon>
                 </template>
 
             </n-input>

@@ -129,7 +129,7 @@ function setLastMessage(msg: any, date: any) {
                     minRows: 1
                 }" @keydown.enter.prevent="() => false" @keyup.enter.prevent="handleQuestion" :disabled="diable_input">
                     <template #suffix>
-                        <icon name="fasong" style="color: green;font-size: 1rem;"></icon>
+                        <icon name="fasong" style="color: green;font-size: 1rem;" @click="handleQuestion"></icon>
                     </template>
 
                 </n-input>

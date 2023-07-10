@@ -3,8 +3,9 @@ import { NLayout, NForm, NFormItem, FormRules, NInput, NButton } from 'naive-ui'
 import Service from '@/utils/Service';
 import { reactive, ref } from 'vue';
 import store from '@/store';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 let router = useRouter()
+let route = useRoute()
 let form_ref = ref()
 let form = reactive({
     grant_type: 'password',
@@ -39,14 +40,24 @@ async function login() {
             await store.dispatch('savePath', '')
             router.push({ path: redirect_url, replace: true })
         } else {
-            router.push({ path: '/', replace: true })
+            if (isMobile()) {
+                router.push({ path: '/mobile/chat', replace: true })
+            } else {
+
+                router.push({ path: '/', replace: true })
+            }
         }
 
     }
 }
+function isMobile() {
+    let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+
+    return flag;
+}
 
 function handleClick() {
-   router.replace('/register')
+    router.replace('/register')
 }
 
 </script>
@@ -74,7 +85,8 @@ function handleClick() {
                 </n-form-item>
 
 
-                <n-button type="primary" @click="login" @keyup.enter.native="login" style="width: 100%;font-size: 16px;">登&nbsp;&nbsp;录</n-button>
+                <n-button type="primary" @click="login" @keyup.enter.native="login"
+                    style="width: 100%;font-size: 16px;">登&nbsp;&nbsp;录</n-button>
                 <div class="error">
                     {{ error_msg }}
                 </div>
@@ -101,6 +113,7 @@ function handleClick() {
     margin: 200px auto;
     width: 300px;
     flex-direction: column;
+
     .error {
         color: red;
         margin-top: 10px;
@@ -111,6 +124,7 @@ function handleClick() {
         font-size: 16px !important;
         --n-height: 44px !important;
     }
+
     :deep(.n-button) {
         --n-height: 44px !important;
     }
@@ -121,6 +135,7 @@ function handleClick() {
         font-size: 12px;
         cursor: pointer;
         color: #999;
+
         .register {
             color: #999;
         }
@@ -134,5 +149,4 @@ function handleClick() {
         display: flex;
         flex-direction: column;
     }
-}
-</style>
+}</style>
