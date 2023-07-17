@@ -195,7 +195,7 @@ async function handleClickSession(session_id) {
     }
 }
 
-.v-binder-follower-content {
+.sub-menu {
     width: var(--v-target-width);
 }
 

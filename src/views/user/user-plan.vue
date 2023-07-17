@@ -21,7 +21,7 @@ let columns: any = ref([
         key: 'period_name', title: '周期'
     },
     {
-        key: 'used', title: '剩余量'
+        key: 'used', title: '已使用量'
     },
     {
         key: 'enable', title: '启用', render(row: any) {
