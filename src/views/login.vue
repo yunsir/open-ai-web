@@ -52,7 +52,6 @@ async function login() {
 }
 function isMobile() {
     let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
-
     return flag;
 }
 
@@ -92,13 +91,13 @@ function handleClick() {
                 </div>
             </n-form>
 
-            <div class="login-bottom">
+            <!-- <div class="login-bottom">
 
                 <div class=""></div>
                 <div class="register" @click="handleClick">
                     去注册
                 </div>
-            </div>
+            </div> -->
         </div>
     </n-layout>
 </template>
